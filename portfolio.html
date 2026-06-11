@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Laurence Bayhonan — Social Media Manager & Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0B0F1A;--navy2:#111827;--navy3:#1C2436;
+  --violet:#7C3AED;--violet2:#6D28D9;
+  --vs:rgba(124,58,237,0.12);--vg:rgba(124,58,237,0.25);
+  --white:#F8F9FF;--muted:#6B7280;--muted2:#9CA3AF;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --serif:'Instrument Serif',serif;--sans:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--navy);color:var(--white);font-family:var(--sans);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--violet);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .2s,height .2s,border-radius .2s;}
+#cur2{position:fixed;width:32px;height:32px;border:1px solid rgba(124,58,237,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .13s ease;}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:44px;height:44px;border-radius:6px;}
+body:has(a:hover) #cur2,body:has(button:hover) #cur2{opacity:0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:rgba(11,15,26,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--white);text-decoration:none;}
+.logo span{color:var(--violet);font-style:normal;}
+.nav-r{display:flex;align-items:center;gap:2rem;}
+.nl{font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s;}
+.nl:hover{color:var(--white);}
+.nb{background:var(--violet);color:#fff;padding:0.5rem 1.3rem;border-radius:8px;font-size:0.78rem;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;}
+.nb:hover{background:var(--violet2);transform:translateY(-1px);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 2.5rem 5rem;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.orb1{width:500px;height:500px;background:rgba(124,58,237,0.18);top:-100px;right:-60px;}
+.orb2{width:350px;height:350px;background:rgba(124,58,237,0.09);bottom:0;left:-80px;}
+.hero-in{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;}
+.eyebrow{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid var(--border2);padding:0.35rem 1rem;border-radius:100px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted2);margin-bottom:2rem;}
+.dot{width:6px;height:6px;border-radius:50%;background:#22C55E;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+h1{font-family:var(--serif);font-size:clamp(3.5rem,7vw,7rem);line-height:1.0;letter-spacing:-0.02em;margin-bottom:1.8rem;}
+h1 em{font-style:italic;color:var(--violet);}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap;}
+.hero-desc{font-size:1rem;color:var(--muted2);line-height:1.75;max-width:420px;}
+.hero-desc strong{color:var(--white);font-weight:600;}
+.ctas{display:flex;gap:0.8rem;flex-wrap:wrap;flex-shrink:0;}
+.btnv{background:var(--violet);color:#fff;padding:0.8rem 1.8rem;border-radius:8px;font-size:0.88rem;font-weight:700;text-decoration:none;transition:background .2s,transform .2s;}
+.btnv:hover{background:var(--violet2);transform:translateY(-2px);}
+.btng{background:transparent;border:1px solid var(--border2);color:var(--white);padding:0.8rem 1.8rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:border-color .2s,background .2s;}
+.btng:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05);}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:16px;margin-top:5rem;overflow:hidden;max-width:1100px;}
+.hstat{padding:2rem;border-right:1px solid var(--border);text-align:center;}
+.hstat:last-child{border-right:none;}
+.hsn{font-family:var(--serif);font-size:3rem;font-style:italic;color:var(--white);line-height:1;}
+.hsl{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem;}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0.9rem 0;}
+.mtrack{display:inline-flex;white-space:nowrap;animation:scrollx 22s linear infinite;}
+.mtrack span{font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:0 2.5rem;display:inline-flex;align-items:center;gap:2.5rem;}
+.mtrack span::after{content:'◆';font-size:0.4rem;color:var(--violet);}
+@keyframes scrollx{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* WORK */
+#work{padding:6rem 2.5rem;max-width:1200px;margin:0 auto;}
+.slabel{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--violet);margin-bottom:0.8rem;}
+h2.sh{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-0.02em;line-height:1.05;margin-bottom:0.7rem;}
+h2.sh em{font-style:italic;color:var(--violet);}
+.sdesc{font-size:0.92rem;color:var(--muted2);line-height:1.7;max-width:500px;margin-bottom:3.5rem;}
+
+/* PROJECT CARDS */
+.pgrid{display:flex;flex-direction:column;gap:2px;background:var(--border);}
+.prow{display:grid;gap:2px;}
+.prow.r2{grid-template-columns:1.4fr 1fr;}
+.prow.r2b{grid-template-columns:1fr 1.4fr;}
+.prow.r1{grid-template-columns:1fr;}
+
+.pc{background:var(--navy2);position:relative;overflow:hidden;cursor:pointer;}
+.pc:hover .pcover{transform:scale(1.04);}
+.pc:hover .poverlay{opacity:1;}
+.pc:hover .parrow{transform:translate(3px,-3px);}
+
+.pthumb{width:100%;overflow:hidden;position:relative;}
+.pcover{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.pmosaic{display:grid;gap:2px;width:100%;}
+.pmosaic.g2{grid-template-columns:1fr 1fr;}
+.pmosaic.g3{grid-template-columns:1fr 1fr 1fr;}
+.pmosaic.g4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+.pmosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.pc:hover .pmosaic img{transform:scale(1.04);}
+
+.pbody{padding:1.5rem 1.8rem;background:linear-gradient(to top,rgba(11,15,26,.97) 0%,rgba(11,15,26,.65) 60%,transparent 100%);}
+.pclient{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--violet);margin-bottom:.3rem;}
+.pname{font-family:var(--serif);font-size:1.25rem;font-weight:700;margin-bottom:.4rem;color:var(--white);}
+.pdesc{font-size:.8rem;color:var(--muted2);line-height:1.5;margin-bottom:.9rem;max-width:500px;}
+.ptags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.pt{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:4px;}
+.ptv{background:var(--vs);color:#A78BFA;border:1px solid rgba(124,58,237,.3);}
+.ptw{background:rgba(255,255,255,.06);color:var(--muted2);border:1px solid var(--border2);}
+.poverlay{position:absolute;inset:0;background:rgba(124,58,237,.06);opacity:0;transition:opacity .3s;pointer-events:none;}
+.parrow{position:absolute;top:1.2rem;right:1.2rem;width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--white);transition:transform .3s;}
+.click-hint{position:absolute;bottom:1.2rem;right:1.8rem;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:0.4rem;transition:color .3s;}
+.pc:hover .click-hint{color:rgba(167,139,250,0.7);}
+
+/* blog text card */
+.ptextonly{background:var(--navy3);padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;}
+.bsamples{display:flex;flex-direction:column;gap:.55rem;margin-top:1rem;}
+.bsample{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;font-size:.78rem;color:var(--muted2);line-height:1.4;transition:border-color .2s,color .2s;cursor:default;}
+.bsample:hover{border-color:rgba(124,58,237,.4);color:var(--white);}
+.bsample strong{color:var(--white);font-weight:600;display:block;margin-bottom:.2rem;font-size:.8rem;}
+
+/* ══ LIGHTBOX ══ */
+#lb{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(5,7,14,0.96);
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+  backdrop-filter:blur(12px);
+}
+#lb.open{display:flex;opacity:1;}
+.lb-top{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;
+  border-bottom:1px solid var(--border);
+  z-index:10;
+}
+.lb-title{
+  display:flex;flex-direction:column;gap:.2rem;
+}
+.lb-client{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);}
+.lb-name{font-family:var(--serif);font-size:1.1rem;color:var(--white);}
+.lb-counter{font-size:.8rem;font-weight:600;color:var(--muted2);letter-spacing:.06em;}
+.lb-close{
+  width:38px;height:38px;border-radius:8px;
+  background:rgba(255,255,255,.07);border:1px solid var(--border2);
+  color:var(--white);font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.lb-close:hover{background:rgba(255,45,85,.25);color:#ff6b8a;}
+
+.lb-stage{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;flex:1;padding:5rem 5rem 4rem;
+  position:relative;
+}
+.lb-img-wrap{
+  position:relative;max-width:860px;width:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+#lb-img{
+  max-width:100%;max-height:calc(100vh - 200px);
+  border-radius:12px;
+  object-fit:contain;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  transition:opacity .2s,transform .2s;
+  display:block;margin:0 auto;
+}
+#lb-img.fade{opacity:0;transform:scale(.97);}
+
+/* blog lightbox */
+#lb-blog{display:none;max-width:860px;width:100%;max-height:calc(100vh - 200px);overflow-y:auto;padding:2rem;border-radius:12px;background:var(--navy2);border:1px solid var(--border2);}
+.blog-entry{padding:1.5rem 0;border-bottom:1px solid var(--border);}
+.blog-entry:last-child{border-bottom:none;}
+.be-client{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:.4rem;}
+.be-title{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem;color:var(--white);}
+.be-meta{font-size:.78rem;color:var(--muted2);margin-bottom:.4rem;}
+.be-snippet{font-size:.82rem;color:var(--muted2);line-height:1.6;}
+
+/* nav arrows */
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:10px;
+  background:rgba(255,255,255,.07);border:1px solid var(--border2);
+  color:var(--white);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;
+  z-index:10;
+}
+.lb-arrow:hover{background:var(--violet);transform:translateY(-50%) scale(1.05);}
+.lb-prev{left:-62px;}
+.lb-next{right:-62px;}
+
+/* thumbnail strip */
+.lb-thumbs{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;gap:6px;justify-content:center;align-items:center;
+  padding:1rem 2rem;overflow-x:auto;
+  border-top:1px solid var(--border);
+  scrollbar-width:none;
+}
+.lb-thumbs::-webkit-scrollbar{display:none;}
+.lb-thumb{
+  width:52px;height:52px;border-radius:6px;
+  object-fit:cover;cursor:pointer;
+  border:2px solid transparent;
+  opacity:.5;transition:opacity .2s,border-color .2s;
+  flex-shrink:0;
+}
+.lb-thumb.active{opacity:1;border-color:var(--violet);}
+.lb-thumb-text{
+  width:52px;height:52px;border-radius:6px;
+  background:var(--navy3);border:2px solid transparent;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;cursor:pointer;
+  opacity:.5;transition:opacity .2s,border-color .2s;
+  flex-shrink:0;
+}
+.lb-thumb-text.active{opacity:1;border-color:var(--violet);}
+
+/* ABOUT */
+#about{padding:6rem 2.5rem;border-top:1px solid var(--border);}
+.about-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.abouth{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.abouth em{font-style:italic;color:var(--violet);}
+.aboutp{font-size:.92rem;color:var(--muted2);line-height:1.8;margin-bottom:.8rem;}
+.aboutp strong{color:var(--white);}
+.facts{display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem;}
+.fact{display:flex;align-items:center;gap:.9rem;padding:.8rem 1rem;border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
+.fact:hover{border-color:var(--border2);}
+.fi{width:34px;height:34px;border-radius:8px;background:var(--vs);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.ft{font-size:.82rem;color:var(--muted2);}
+.ft strong{color:var(--white);font-weight:600;display:block;}
+.sksec{display:flex;flex-direction:column;gap:1.4rem;}
+.sgl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:.5rem;}
+.sgt{display:flex;flex-wrap:wrap;gap:.4rem;}
+.stag{font-size:.75rem;font-weight:500;padding:.3rem .8rem;border-radius:6px;border:1px solid var(--border2);color:var(--muted2);transition:border-color .2s,color .2s;cursor:default;}
+.stag:hover{border-color:rgba(124,58,237,.5);color:var(--white);}
+.stag.hi{border-color:rgba(124,58,237,.4);color:#C4B5FD;background:var(--vs);}
+
+/* SERVICES */
+#services{padding:6rem 2.5rem;border-top:1px solid var(--border);}
+.svc-in{max-width:1100px;margin:0 auto;}
+.svcg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.svc{background:var(--navy2);padding:2rem;transition:background .25s;}
+.svc:hover{background:var(--navy3);}
+.svcn{font-family:var(--serif);font-style:italic;font-size:2rem;color:rgba(124,58,237,.3);margin-bottom:1rem;line-height:1;}
+.svcname{font-size:1rem;font-weight:700;margin-bottom:.6rem;}
+.svcd{font-size:.82rem;color:var(--muted2);line-height:1.6;}
+
+/* CONTACT */
+#contact{padding:6rem 2.5rem;border-top:1px solid var(--border);}
+.con-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.conh{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+.conh em{font-style:italic;color:var(--violet);}
+.conp{font-size:.9rem;color:var(--muted2);line-height:1.7;margin-bottom:1.8rem;}
+.cinfo{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.8rem;}
+.ci{font-size:.85rem;color:var(--muted2);display:flex;align-items:center;gap:.7rem;}
+.avail{display:inline-flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ADE80;padding:.4rem 1rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.06em;}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;animation:blink 2s infinite;}
+.cform{display:flex;flex-direction:column;gap:1rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+input,select,textarea{background:var(--navy2);border:1px solid var(--border2);border-radius:8px;padding:.75rem 1rem;color:var(--white);font-family:var(--sans);font-size:.88rem;width:100%;outline:none;transition:border-color .2s;}
+input::placeholder,textarea::placeholder{color:var(--muted);}
+input:focus,textarea:focus,select:focus{border-color:rgba(124,58,237,.6);}
+select option{background:var(--navy2);}
+textarea{resize:vertical;min-height:110px;}
+.csend{background:var(--violet);color:#fff;border:none;padding:.85rem 1.8rem;border-radius:8px;font-family:var(--sans);font-size:.88rem;font-weight:700;cursor:pointer;width:100%;transition:background .2s,transform .2s;}
+.csend:hover{background:var(--violet2);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.flogo{font-family:var(--serif);font-style:italic;font-size:1.2rem;}
+.flogo span{color:var(--violet);font-style:normal;}
+.flinks{display:flex;gap:2rem;}
+.flinks a{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--violet);}
+.fcopy{font-size:.72rem;color:var(--muted);}
+
+/* UTILS */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.2rem;} .nav-r .nl{display:none;}
+  #hero,#work,#services,#contact,#about{padding:4rem 1.2rem;}
+  h1{font-size:3rem;}
+  .hstats{grid-template-columns:1fr;} .hstat{border-right:none;border-bottom:1px solid var(--border);} .hstat:last-child{border-bottom:none;}
+  .prow.r2,.prow.r2b{grid-template-columns:1fr;}
+  .about-in,.con-in{grid-template-columns:1fr;}
+  .svcg{grid-template-columns:1fr;}
+  .frow2{grid-template-columns:1fr;}
+  footer{padding:2rem 1.2rem;}
+  .lb-prev{left:8px;} .lb-next{right:8px;}
+  .lb-stage{padding:5rem 4rem 4rem;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Project gallery">
+  <div class="lb-top">
+    <div class="lb-title">
+      <div class="lb-client" id="lb-client"></div>
+      <div class="lb-name" id="lb-name"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <span class="lb-counter" id="lb-counter"></span>
+      <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="lb-stage">
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt=""/>
+      <div id="lb-blog" class="blog-scroll"></div>
+    </div>
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Previous">←</button>
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="Next">→</button>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Laurence<span>.</span></a>
+  <div class="nav-r">
+    <a href="#work" class="nl">Work</a>
+    <a href="#about" class="nl">About</a>
+    <a href="#services" class="nl">Services</a>
+    <a href="#contact" class="nb">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="hero-in">
+    <div class="eyebrow reveal"><span class="dot"></span> Open to projects — June 2026</div>
+    <h1 class="reveal">Social media that<br>actually <em>works.</em></h1>
+    <div class="hero-row reveal">
+      <p class="hero-desc">I'm <strong>Laurence Bayhonan</strong> — a Social Media Manager and Designer from Iligan City, Philippines. I build content, manage communities, and design visuals that move people to act.</p>
+      <div class="ctas">
+        <a href="#work" class="btnv">View My Work</a>
+        <a href="#contact" class="btng">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hstats reveal d1">
+      <div class="hstat"><div class="hsn">4+</div><div class="hsl">Years Experience</div></div>
+      <div class="hstat"><div class="hsn">50+</div><div class="hsl">Brands Worked With</div></div>
+      <div class="hstat"><div class="hsn">3M+</div><div class="hsl">Impressions Generated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mtrack">
+    <span>Social Media Management</span><span>Graphic Design</span><span>Content Strategy</span><span>SEO Blog Writing</span><span>Ad Creative</span><span>Brand Identity</span><span>Community Growth</span><span>TikTok & Reels</span><span>Copywriting</span>
+    <span>Social Media Management</span><span>Graphic Design</span><span>Content Strategy</span><span>SEO Blog Writing</span><span>Ad Creative</span><span>Brand Identity</span><span>Community Growth</span><span>TikTok & Reels</span><span>Copywriting</span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="slabel reveal">Portfolio</div>
+  <h2 class="sh reveal">Work I'm proud of.</h2>
+  <p class="sdesc reveal">Click any project to browse through the actual samples — every image you see is real client work.</p>
+
+  <div class="pgrid reveal">
+
+    <!-- ROW 1 -->
+    <div class="prow r2">
+      <!-- FURPETSAKES -->
+      <div class="pc" data-project="furpetsakes">
+        <div class="pthumb" style="height:340px;">
+          <div class="pmosaic g4" style="height:100%;">
+            <img src="https://drive.google.com/thumbnail?id=1-RjRnR37THv6ZqMzXzkSaQBjwPyj0Fqe&sz=w400" alt="Furpetsakes World Animal Day" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1AtSVnx_JitrqYQ0o48Bk-3NVG3OgY_d6&sz=w400" alt="Furpetsakes puppy prep" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=14nxRqQVl0CpYvqJgg_ZKwJXcz2G-O9xy&sz=w400" alt="Furpetsakes fun facts" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1233KJ7RBi2frRzNvUTM6iVG5uxTRpwKt&sz=w400" alt="Furpetsakes cat enrichment" loading="lazy"/>
+          </div>
+        </div>
+        <div class="poverlay"></div>
+        <div class="parrow">↗</div>
+        <div class="click-hint">Click to browse all samples</div>
+        <div class="pbody">
+          <div class="pclient">Furpetsakes — Pet Care Brand</div>
+          <div class="pname">Social Media Content System</div>
+          <div class="pdesc">A complete content library — educational carousels, event posts, adoption campaigns, and vet-tip infographics that grew a loyal pet community.</div>
+          <div class="ptags"><span class="pt ptv">Social Media</span><span class="pt ptv">Graphic Design</span><span class="pt ptw">Instagram</span><span class="pt ptw">Content Strategy</span></div>
+        </div>
+      </div>
+
+      <!-- SYDNEY POWER -->
+      <div class="pc" data-project="sydney">
+        <div class="pthumb" style="height:340px;">
+          <div class="pmosaic g2" style="height:100%;">
+            <img src="https://drive.google.com/thumbnail?id=1ktDo00qHyFvXd7EcOg_J9jDupXucAwN2&sz=w400" alt="Sydney Power emergency callout" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1XAjCnkfwGi3W1WycneKBDOiGlSqeIi8L&sz=w400" alt="Sydney Power new home owner" loading="lazy"/>
+          </div>
+        </div>
+        <div class="poverlay"></div>
+        <div class="parrow">↗</div>
+        <div class="click-hint">Click to browse all samples</div>
+        <div class="pbody">
+          <div class="pclient">Sydney Power Group — Australia</div>
+          <div class="pname">Social Media & Ad Design</div>
+          <div class="pdesc">On-brand social posts and ad creatives for a Level 2 electrical company in Sydney — residential and industrial campaigns built for performance.</div>
+          <div class="ptags"><span class="pt ptv">Ad Design</span><span class="pt ptw">Facebook</span><span class="pt ptw">Brand Visuals</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="prow r2b">
+      <!-- E-COMMERCE -->
+      <div class="pc" data-project="ecommerce">
+        <div class="pthumb" style="height:320px;">
+          <div class="pmosaic g2" style="height:100%;">
+            <img src="https://drive.google.com/thumbnail?id=1-k7PBA2cl9sMT_k23wYg7ZS9JE33ONlg&sz=w400" alt="E-commerce varieties" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1lKaDxEtA6MZBCLEvBoXsFzbJMQz_5awq&sz=w400" alt="E-commerce installation guide" loading="lazy"/>
+          </div>
+        </div>
+        <div class="poverlay"></div>
+        <div class="parrow">↗</div>
+        <div class="click-hint">Click to browse all samples</div>
+        <div class="pbody">
+          <div class="pclient">E-Commerce Client</div>
+          <div class="pname">Product Content & Visual Design</div>
+          <div class="pdesc">Product visuals and instructional graphic content — variety showcases, installation guides, and social-ready creatives for an online retail client.</div>
+          <div class="ptags"><span class="pt ptv">E-Commerce</span><span class="pt ptw">Product Design</span><span class="pt ptw">Social Content</span></div>
+        </div>
+      </div>
+
+      <!-- FURPETSAKES CAMPAIGNS -->
+      <div class="pc" data-project="furpets2">
+        <div class="pthumb" style="height:320px;">
+          <div class="pmosaic g3" style="height:100%;">
+            <img src="https://drive.google.com/thumbnail?id=1T1RTQb1bJXdW5Fz0i-Y04fYGDZ_WmO5x&sz=w400" alt="Adopt don't shop" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1oO3PfpOey1aMGU7yTHAFrPe2EHrIeYeE&sz=w400" alt="Vet visit schedule" loading="lazy"/>
+            <img src="https://drive.google.com/thumbnail?id=1Y0gF5E6QW-eJdZRruviar7WsAovZx06h&sz=w400" alt="Pet adoption post" loading="lazy"/>
+          </div>
+        </div>
+        <div class="poverlay"></div>
+        <div class="parrow">↗</div>
+        <div class="click-hint">Click to browse all samples</div>
+        <div class="pbody">
+          <div class="pclient">Furpetsakes — Campaign Series</div>
+          <div class="pname">Adoption & Awareness Campaigns</div>
+          <div class="pdesc">High-impact posts for pet adoption drives, vet care awareness, and community events — designed for shares and real engagement.</div>
+          <div class="ptags"><span class="pt ptv">Campaign Design</span><span class="pt ptw">Instagram</span><span class="pt ptw">Community</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="prow r2">
+      <!-- AD DESIGN -->
+      <div class="pc" data-project="addesign">
+        <div class="pthumb" style="height:300px;">
+          <img class="pcover" src="https://drive.google.com/thumbnail?id=1LCJrJKalLZShVDxSWy2q_BrZCEZkgHQ1&sz=w900" alt="Ad design creative" loading="lazy"/>
+        </div>
+        <div class="poverlay"></div>
+        <div class="parrow">↗</div>
+        <div class="click-hint">Click to browse all samples</div>
+        <div class="pbody">
+          <div class="pclient">Ad Design — Kazahana Branding</div>
+          <div class="pname">Brand & Ad Creative Design</div>
+          <div class="pdesc">Full ad creative development including branded graphics, promotional visuals, and design assets aligned to a full brand identity system.</div>
+          <div class="ptags"><span class="pt ptv">Ad Creative</span><span class="pt ptv">Branding</span><span class="pt ptw">Graphic Design</span></div>
+        </div>
+      </div>
+
+      <!-- SEO BLOG WRITING -->
+      <div class="pc ptextonly" data-project="blog">
+        <div>
+          <div class="pclient" style="margin-bottom:.4rem;">Blog Writing — Multiple Clients</div>
+          <div class="pname" style="font-family:var(--serif);font-size:1.25rem;margin-bottom:.5rem;">SEO Content & Copywriting</div>
+          <div class="pdesc" style="font-size:.82rem;color:var(--muted2);line-height:1.5;max-width:400px;">Long-form SEO blog posts, web copy, and sales content for clients across Singapore and beyond — published on WordPress, ranking on Google.</div>
+        </div>
+        <div class="bsamples">
+          <div class="bsample"><strong>The Bloom Box, Singapore</strong>Valentine's Day flower arrangements & fresh blooms guide</div>
+          <div class="bsample"><strong>Nimisski Fashion</strong>CNY fashionable dress guide for Singapore shoppers</div>
+          <div class="bsample"><strong>The Body Firm</strong>Aesthetic clinic Singapore — ultimate treatments guide</div>
+          <div class="bsample"><strong>Outsource Owls</strong>SDR strategy, virtual assistants for startups & HR blogs</div>
+        </div>
+        <div class="click-hint" style="position:relative;bottom:auto;right:auto;margin-top:1rem;justify-content:flex-start;">Click to read excerpts →</div>
+        <div class="ptags" style="margin-top:.8rem;">
+          <span class="pt ptv">SEO Writing</span><span class="pt ptw">WordPress</span><span class="pt ptw">Copywriting</span><span class="pt ptw">Long-form</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-in">
+    <div class="reveal">
+      <div class="slabel" style="margin-bottom:.8rem;">About Me</div>
+      <h2 class="abouth">Driven by results.<br><em>Defined by craft.</em></h2>
+      <p class="aboutp">I'm <strong>Laurence Bayhonan</strong> — a Social Media Manager, Graphic Designer, and SEO Content Writer based in Iligan City, Philippines. Since 2022, I've been building brand presences, managing communities, and creating content that connects brands with real people.</p>
+      <p class="aboutp">I work across niches — from pet care and electrical services in Australia, to fashion, florists, and wellness brands in Singapore. I bring both the creative eye and the strategic thinking to every project.</p>
+      <div class="facts">
+        <div class="fact"><div class="fi">🎓</div><div class="ft"><strong>BS Metallurgical Engineering — MSU-IIT</strong>Mindanao State University · Iligan City · 2021–Present</div></div>
+        <div class="fact"><div class="fi">🖌️</div><div class="ft"><strong>Certified Graphic Designer</strong>SEVEN Studios Design Training Program · May 2023</div></div>
+        <div class="fact"><div class="fi">🌏</div><div class="ft"><strong>Clients in PH, AU & SG</strong>Working across time zones since 2022</div></div>
+      </div>
+    </div>
+    <div class="sksec reveal d1">
+      <div><div class="sgl">Social Media Platforms</div><div class="sgt"><span class="stag hi">Instagram</span><span class="stag hi">TikTok</span><span class="stag hi">Facebook</span><span class="stag">Twitter / X</span><span class="stag">LinkedIn</span><span class="stag">Pinterest</span><span class="stag">YouTube Shorts</span></div></div>
+      <div><div class="sgl">Design & Creative</div><div class="sgt"><span class="stag hi">Canva</span><span class="stag hi">CapCut</span><span class="stag">Adobe Illustrator</span><span class="stag">Photoshop</span><span class="stag">Logo Design</span><span class="stag">Video Editing</span></div></div>
+      <div><div class="sgl">Marketing & Strategy</div><div class="sgt"><span class="stag hi">SEO Optimization</span><span class="stag hi">Content Strategy</span><span class="stag hi">Copywriting</span><span class="stag">Meta Ads</span><span class="stag">WordPress</span><span class="stag">Google Business</span></div></div>
+      <div><div class="sgl">Tools & Productivity</div><div class="sgt"><span class="stag">Google Suite</span><span class="stag">Trello</span><span class="stag">Slack</span><span class="stag">Hootsuite</span><span class="stag">Shopify</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-in">
+    <div class="slabel reveal">Services</div>
+    <h2 class="sh reveal">What I bring<br><em>to your brand.</em></h2>
+    <div class="svcg reveal">
+      <div class="svc"><div class="svcn">01</div><div class="svcname">Social Media Management</div><p class="svcd">Full-cycle management — strategy, scheduling, community engagement, and growth across Instagram, TikTok, Facebook, and more.</p></div>
+      <div class="svc"><div class="svcn">02</div><div class="svcname">Content & Graphic Design</div><p class="svcd">Posts, carousels, reels covers, story templates, and ad creatives — visually consistent and designed to stop the scroll.</p></div>
+      <div class="svc"><div class="svcn">03</div><div class="svcname">SEO Blog & Web Copywriting</div><p class="svcd">Keyword-researched, long-form content that ranks on Google and reads like a human wrote it. Published directly on WordPress.</p></div>
+      <div class="svc"><div class="svcn">04</div><div class="svcname">Brand Identity Design</div><p class="svcd">Logos, color systems, typography guides, and full visual identities that give your brand a coherent, professional look everywhere.</p></div>
+      <div class="svc"><div class="svcn">05</div><div class="svcname">Paid Ads Creative</div><p class="svcd">Ad graphics and copy designed to hook in the first 2 seconds — built for Meta and TikTok campaign performance.</p></div>
+      <div class="svc"><div class="svcn">06</div><div class="svcname">Analytics & Reporting</div><p class="svcd">Monthly reports that tell you what's growing, what's not, and exactly what we're doing about it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="con-in">
+    <div class="reveal">
+      <div class="slabel" style="margin-bottom:.8rem;">Contact</div>
+      <h2 class="conh">Let's make your brand<br><em>impossible to ignore.</em></h2>
+      <p class="conp">Have a project in mind? Drop me a message and I'll get back to you within 24 hours.</p>
+      <div class="cinfo">
+        <span class="ci">📧 laurencemaquilingbayhonan@gmail.com</span>
+        <span class="ci">📍 Iligan City, Lanao del Norte, Philippines</span>
+        <span class="ci">📞 +63 935 627 1162</span>
+      </div>
+      <div class="avail"><span class="avail-dot"></span> Available for new projects</div>
+    </div>
+    <div class="reveal d1">
+      <form class="cform" onsubmit="handleSend(event)">
+        <div class="frow2">
+          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required/></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="fg"><label>Service Needed</label>
+          <select><option value="">Choose a service...</option><option>Social Media Management</option><option>Content & Graphic Design</option><option>SEO Blog Writing</option><option>Brand Identity</option><option>Paid Ads Creative</option><option>Other / Not Sure Yet</option></select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Tell me about your brand, goals, and timeline..."></textarea></div>
+        <button type="submit" class="csend" id="sendBtn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="flogo">Laurence<span>.</span></span>
+  <div class="flinks"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">LinkedIn</a><a href="#">Behance</a></div>
+  <span class="fcopy">© 2026 Laurence Bayhonan</span>
+</footer>
+
+<script>
+// ── CURSOR
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cur2.style.left=rx+'px';cur2.style.top=ry+'px';requestAnimationFrame(loop);})();
+
+// ── REVEAL
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ── LIGHTBOX DATA
+const PROJECTS = {
+  furpetsakes:{
+    client:'Furpetsakes — Pet Care Brand',
+    name:'Social Media Content System',
+    type:'images',
+    images:[
+      {id:'1-RjRnR37THv6ZqMzXzkSaQBjwPyj0Fqe',alt:'World Animal Day Celebration'},
+      {id:'1AtSVnx_JitrqYQ0o48Bk-3NVG3OgY_d6',alt:'Preparing Your Home for a New Puppy'},
+      {id:'1SrbPZtAzA88gnKhrJ2xK6xBPm0r2RAl8',alt:'First Week Routine for Your New Puppy'},
+      {id:'1sFCvfbidcLJlZYsVpKdOs5PMe2rsuyBz',alt:'Training Foundations — Build a Strong Bond'},
+      {id:'1tLGgSsiOENzN9bykZxm5EKzRmfPxIJlB',alt:'Health Basics: Essential Care for Your Puppy'},
+      {id:'14nxRqQVl0CpYvqJgg_ZKwJXcz2G-O9xy',alt:'Fun Pet Facts'},
+      {id:'1GTpx-P8FixdCXBAf7k3pd5TdaI8WJJkf',alt:'Furpetsakes post'},
+      {id:'1233KJ7RBi2frRzNvUTM6iVG5uxTRpwKt',alt:'Indoor Cat Enrichment Ideas'},
+      {id:'1E15fubJUF3bjqeGTUfX_RljTe99JLoj9',alt:'Furpetsakes content'},
+      {id:'1sQ7O5YVialV1tOUauBGzH4ov8Rbd9B-R',alt:'Furpetsakes post 8'},
+    ]
+  },
+  sydney:{
+    client:'Sydney Power Group — Australia',
+    name:'Social Media & Ad Design',
+    type:'images',
+    images:[
+      {id:'1ktDo00qHyFvXd7EcOg_J9jDupXucAwN2',alt:'Emergency Call Out'},
+      {id:'1XAjCnkfwGi3W1WycneKBDOiGlSqeIi8L',alt:'New Home Owner Alert'},
+      {id:'1Ed0N6-PIcsUxM0PNm_U6nBaCGgYfBY8a',alt:'Tiger Tails — Crane Trucks'},
+      {id:'1lxxay9N-6ljAWMp_GVamwFZkf8om1uO6',alt:"Sydney's Most Trusted Electrical"},
+      {id:'1jRHxK9snsDlQI9OPYFgnX3zLvqAP4icC',alt:'Check Out Our Official Website'},
+      {id:'1fIIXhjfj7f7k-bayMthXaM4pXVJkQCXh',alt:'Website Promotion Post'},
+      {id:'17vWipTDgplOd1msNSXG2pIUdNg8rb6Jm',alt:'MacBook Website Mockup'},
+    ]
+  },
+  ecommerce:{
+    client:'E-Commerce Client',
+    name:'Product Content & Visual Design',
+    type:'images',
+    images:[
+      {id:'1-k7PBA2cl9sMT_k23wYg7ZS9JE33ONlg',alt:'Product Varieties'},
+      {id:'1g__v6gNxR-aNci1FSHF4QRZrZQA2FHWs',alt:'Patchwork Design'},
+      {id:'159TJOmVMVEONFt5bChOG9GbL8pb4TZYw',alt:'Paragraph 2 — Product Post'},
+      {id:'1lKaDxEtA6MZBCLEvBoXsFzbJMQz_5awq',alt:'Easy Installation Guide'},
+    ]
+  },
+  furpets2:{
+    client:'Furpetsakes — Campaign Series',
+    name:'Adoption & Awareness Campaigns',
+    type:'images',
+    images:[
+      {id:'1T1RTQb1bJXdW5Fz0i-Y04fYGDZ_WmO5x',alt:'Adopt Don\'t Shop Today!'},
+      {id:'1rToCoNIGBMasjd99CCB68KQzhqV_JHWx',alt:'Adopt Don\'t Shop — Version 2'},
+      {id:'1Y0gF5E6QW-eJdZRruviar7WsAovZx06h',alt:'Pet Adoption Instagram Post'},
+      {id:'1oO3PfpOey1aMGU7yTHAFrPe2EHrIeYeE',alt:'Recommended Vet Visits for Puppies/Kittens'},
+    ]
+  },
+  addesign:{
+    client:'Ad Design — Kazahana Branding',
+    name:'Brand & Ad Creative Design',
+    type:'images',
+    images:[
+      {id:'1LCJrJKalLZShVDxSWy2q_BrZCEZkgHQ1',alt:'Kazahana Ad Creative'},
+    ]
+  },
+  blog:{
+    client:'SEO Blog Writing — Multiple Clients',
+    name:'Long-form SEO Content & Copywriting',
+    type:'blog',
+    entries:[
+      {
+        client:'The Bloom Box, Singapore',
+        title:'Wondering How to Impress Your Valentine? Discover Stunning Flower Arrangements!',
+        meta:'Keyword: Flower Arrangements · 1,725 words · Published on WordPress',
+        snippet:'A comprehensive guide to Valentine\'s Day flower arrangements for The Bloom Box Singapore — covering floral symbolism, premium bouquet collections including the Bloom Box of Valentine featuring Kenyan red roses, and emotional resonance of gifting flowers. Written to rank for "flower arrangements Singapore".',
+      },
+      {
+        client:'Nimisski Fashion, Singapore',
+        title:'Where to Find a Fashionable Dress in Singapore for CNY',
+        meta:'Keyword: Fashionable Dress Singapore · 2,168 words · Published on WordPress',
+        snippet:'A festival fashion guide blending CNY tradition with contemporary Singapore style — covering local designers, luxury department stores, and online platforms. Written to rank for "fashionable dress Singapore" ahead of Chinese New Year.',
+      },
+      {
+        client:'The Body Firm, Singapore',
+        title:'Unlocking Radiance: The Ultimate Aesthetic Clinic Guide in Singapore',
+        meta:'Keyword: Aesthetic Clinic Singapore · 2,255 words · Published on WordPress',
+        snippet:'An in-depth guide to the rise of aesthetic clinics in Singapore — covering non-invasive treatments, the importance of consultation, technological advances, and how clinics cater to a diverse multicultural clientele. Written to rank for "aesthetic clinic Singapore".',
+      },
+      {
+        client:'House On Hire, Singapore',
+        title:'Streamlining Home Solutions: Top Maid Agency Singapore Insights',
+        meta:'Keyword: Top Maid Agency Singapore · 1,934 words · Published on WordPress',
+        snippet:'A comprehensive piece on how professional maid agencies transform household management in Singapore — covering reliability, specialized skills, customized services, and why choosing the right agency matters for modern families.',
+      },
+      {
+        client:'Outsource Owls',
+        title:'Navigating the Sales Development Representative Strategy Maze: Tips for Success',
+        meta:'Keyword: Sales Development Representative · Long-form · Published on WordPress',
+        snippet:'A strategic guide for SDRs covering data-driven outreach, personalized messaging, predictive analytics, and how Outsource Owls customizes SDR services for clients. Covers real-world performance metrics and continuous optimization frameworks.',
+      },
+      {
+        client:'Outsource Owls',
+        title:'Penny-Pinching Powerhouses: Virtual Assistants for Startup Pioneers',
+        meta:'Keyword: Virtual Assistant for Startups · Long-form · Published on WordPress',
+        snippet:'An exploration of how virtual assistants have evolved from basic digital tools to indispensable business resources for startups — covering cost-efficiency, flexibility, specialized skills, and real-world success stories.',
+      },
+    ]
+  }
+};
+
+// ── LIGHTBOX ENGINE
+const lb=document.getElementById('lb');
+const lbImg=document.getElementById('lb-img');
+const lbBlog=document.getElementById('lb-blog');
+const lbClient=document.getElementById('lb-client');
+const lbName=document.getElementById('lb-name');
+const lbCounter=document.getElementById('lb-counter');
+const lbThumbs=document.getElementById('lb-thumbs');
+const lbPrev=document.getElementById('lb-prev');
+const lbNext=document.getElementById('lb-next');
+let current=0, currentProject=null;
+
+function imgUrl(id){return `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;}
+function thumbUrl(id){return `https://drive.google.com/thumbnail?id=${id}&sz=w120`;}
+
+function openLightbox(projectKey){
+  currentProject=PROJECTS[projectKey];
+  current=0;
+  lbClient.textContent=currentProject.client;
+  lbName.textContent=currentProject.name;
+
+  if(currentProject.type==='images'){
+    lbImg.style.display='block';
+    lbBlog.style.display='none';
+    lbPrev.style.display='flex';
+    lbNext.style.display='flex';
+    buildThumbs();
+    showImage(0);
+  } else {
+    lbImg.style.display='none';
+    lbBlog.style.display='block';
+    lbPrev.style.display='none';
+    lbNext.style.display='none';
+    lbCounter.textContent=currentProject.entries.length+' articles';
+    buildBlog();
+    buildBlogThumbs();
+  }
+
+  lb.style.display='flex';
+  requestAnimationFrame(()=>lb.classList.add('open'));
+  document.body.style.overflow='hidden';
+}
+
+function closeLightbox(){
+  lb.classList.remove('open');
+  setTimeout(()=>{lb.style.display='none';},300);
+  document.body.style.overflow='';
+}
+
+function showImage(idx){
+  const imgs=currentProject.images;
+  if(!imgs||!imgs.length) return;
+  current=((idx%imgs.length)+imgs.length)%imgs.length;
+  lbCounter.textContent=(current+1)+' / '+imgs.length;
+  lbImg.classList.add('fade');
+  setTimeout(()=>{
+    lbImg.src=imgUrl(imgs[current].id);
+    lbImg.alt=imgs[current].alt;
+    lbImg.classList.remove('fade');
+  },150);
+  document.querySelectorAll('.lb-thumb').forEach((t,i)=>t.classList.toggle('active',i===current));
+}
+
+function buildThumbs(){
+  lbThumbs.innerHTML='';
+  currentProject.images.forEach((img,i)=>{
+    const t=document.createElement('img');
+    t.className='lb-thumb'+(i===0?' active':'');
+    t.src=thumbUrl(img.id);
+    t.alt=img.alt;
+    t.addEventListener('click',()=>showImage(i));
+    lbThumbs.appendChild(t);
+  });
+}
+
+function buildBlog(){
+  lbBlog.innerHTML=currentProject.entries.map(e=>`
+    <div class="blog-entry">
+      <div class="be-client">${e.client}</div>
+      <div class="be-title">${e.title}</div>
+      <div class="be-meta">${e.meta}</div>
+      <div class="be-snippet">${e.snippet}</div>
+    </div>
+  `).join('');
+}
+
+function buildBlogThumbs(){
+  lbThumbs.innerHTML=currentProject.entries.map((_,i)=>`
+    <div class="lb-thumb-text${i===0?' active':''}" data-i="${i}">📝</div>
+  `).join('');
+  lbThumbs.querySelectorAll('.lb-thumb-text').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const idx=+el.dataset.i;
+      const entries=lbBlog.querySelectorAll('.blog-entry');
+      if(entries[idx]) entries[idx].scrollIntoView({behavior:'smooth'});
+      lbThumbs.querySelectorAll('.lb-thumb-text').forEach((t,i)=>t.classList.toggle('active',i===idx));
+    });
+  });
+}
+
+// events
+lbPrev.addEventListener('click',()=>showImage(current-1));
+lbNext.addEventListener('click',()=>showImage(current+1));
+document.getElementById('lb-close').addEventListener('click',closeLightbox);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='ArrowRight')showImage(current+1);
+  if(e.key==='ArrowLeft')showImage(current-1);
+  if(e.key==='Escape')closeLightbox();
+});
+
+// attach to cards
+document.querySelectorAll('.pc[data-project]').forEach(card=>{
+  card.addEventListener('click',()=>openLightbox(card.dataset.project));
+});
+
+// ── FORM
+function handleSend(e){
+  e.preventDefault();
+  const b=document.getElementById('sendBtn');
+  b.textContent='Sending…';b.style.opacity='.6';
+  setTimeout(()=>{b.innerHTML='✓ Sent! I\'ll reply soon.';b.style.background='#059669';b.style.opacity='1';e.target.reset();},1200);
+}
+</script>
+</body>
+</html>
